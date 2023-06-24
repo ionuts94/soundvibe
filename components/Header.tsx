@@ -64,14 +64,26 @@ export const Header: React.FC<HeaderProps> = ({
         >
           <>
             <div>
-              <Button>
+              <Button
+                onClick={() => { }}
+                className="bg-transparent text-neutral-300 font-medium"
+              >
                 Sign Up
+              </Button>
+            </div>
+
+            <div>
+              <Button
+                className="bg-white px-6 py-2"
+                onClick={() => { }}
+              >
+                Login
               </Button>
             </div>
           </>
         </div>
       </div>
-      {/* {children} */}
+      {children}
     </div>
   )
 }
