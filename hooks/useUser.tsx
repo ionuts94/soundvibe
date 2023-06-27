@@ -1,7 +1,7 @@
 import { useSessionContext, useUser as useSupaUser } from "@supabase/auth-helpers-react";
 import { Subscription, UserDetails } from "@/types";
 import { User } from "@supabase/auth-helpers-nextjs";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 type UserContextType = {
   accessToken: string | null;
@@ -29,4 +29,24 @@ export const MyUserContextProvider = (props: Props) => {
   const [isLoadingData, setIsLoadingData] = useState(false);
   const [userDetails, setUserDetails] = useState<UserDetails | null>(null);
   const [subscription, setSubscription] = useState<Subscription | null>(null);
+
+  const getUserDetails = () => supabase.from('users')
+    .select('*')
+    .single();
+
+  const getSubscription = () => supabase.from('subscriptions')
+    .select('*, prices(*, products(*))')
+    .in('status', ['trialing', 'active'])
+    .single();
+
+  useEffect(() => {
+    if (user && !isLoadingData && !userDetails && !subscription) {
+      setIsLoadingData(true);
+
+      Promise.allSettled([getUserDetails, getSubscription]).then(results => {
+        const userDetailsPromise = results[0];
+        const subscriptionPromise = results[1];
+      })
+    }
+  }, [])
 }
