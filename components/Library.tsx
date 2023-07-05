@@ -2,10 +2,25 @@
 import { TbPlaylist } from 'react-icons/tb';
 import { AiOutlinePlus } from 'react-icons/ai';
 import React from 'react'
+import { useAuthModal } from '@/hooks/useAuthModal';
+import { useUploadModal } from '@/hooks/useUploadModal';
+import { useUser } from '@/hooks/useUser';
 
 export const Library = () => {
+  const authModal = useAuthModal();
+  const { user } = useUser();
+  const uploadModal = useUploadModal();
+
   const onClick = () => {
-    // handle upload later
+    // Open login modal if user press '+' on library 
+    // And they are not logged in
+    if (!user) {
+      return authModal.onOpen();
+    }
+
+    // TODO: Check for subscription
+
+    return uploadModal.onOpen();
   }
 
   return (
