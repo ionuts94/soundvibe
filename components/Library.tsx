@@ -17,8 +17,6 @@ export const Library: React.FC<LibraryProps> = ({ userSongs }) => {
   const { user } = useUser();
   const uploadModal = useUploadModal();
 
-  console.log(userSongs);
-
   const onClick = () => {
     // Open login modal if user press '+' on library 
     // And they are not logged in

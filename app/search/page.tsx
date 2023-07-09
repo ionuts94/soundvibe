@@ -1,6 +1,7 @@
 import { getSongsByTitle } from '@/actions/getSongsByTitle';
 import { Header } from '@/components/Header';
 import { SearchInput } from '@/components/SearchInput';
+import { SearchContent } from './components/SearchContent';
 import React from 'react';
 
 interface SearcProps {
@@ -26,6 +27,7 @@ const Search: React.FC<SearcProps> = async ({ searchParams }) => {
         </div>
         <SearchInput />
       </Header>
+      <SearchContent songs={songs} />
     </div>
   )
 }
