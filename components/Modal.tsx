@@ -13,6 +13,7 @@ interface ModalProps {
 export const Modal: React.FC<ModalProps> = ({
   isOpen, onChange, title, description, children
 }) => {
+  console.log('From modal');
   return (
     <Dialog.Root
       open={isOpen}

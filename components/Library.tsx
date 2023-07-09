@@ -5,11 +5,19 @@ import React from 'react'
 import { useAuthModal } from '@/hooks/useAuthModal';
 import { useUploadModal } from '@/hooks/useUploadModal';
 import { useUser } from '@/hooks/useUser';
+import { MediaItem } from './MediaItem';
+import { Song } from '@/types';
 
-export const Library = () => {
+interface LibraryProps {
+  userSongs: Song[];
+}
+
+export const Library: React.FC<LibraryProps> = ({ userSongs }) => {
   const authModal = useAuthModal();
   const { user } = useUser();
   const uploadModal = useUploadModal();
+
+  console.log(userSongs);
 
   const onClick = () => {
     // Open login modal if user press '+' on library 
@@ -40,7 +48,13 @@ export const Library = () => {
       </div>
 
       <div className='flex flex-col gap-y-2 mt-4 px-3'>
-        List of Songs!
+        {userSongs?.map(song => (
+          <MediaItem
+            key={song.id}
+            onClick={() => null}
+            data={song}
+          />
+        ))}
       </div>
     </div>
   )
