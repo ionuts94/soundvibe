@@ -4,6 +4,8 @@ import { SearchInput } from '@/components/SearchInput';
 import { SearchContent } from './components/SearchContent';
 import React from 'react';
 
+export const revalidate = 0;
+
 interface SearcProps {
   searchParams: {
     title: string
