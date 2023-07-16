@@ -89,6 +89,4 @@ export const LikedButton: React.FC<LikedButtonProps> = ({ songId }) => {
       />
     </button>
   )
-}
-
-export default LikedButton
+};
