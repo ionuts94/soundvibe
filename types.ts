@@ -34,14 +34,14 @@ export interface Price {
   product_id?: string;
   active?: boolean;
   description?: string;
-  unit_ammount?: number;
+  unit_amount?: number;
   currency?: string;
   type?: Stripe.Price.Type;
   interval?: Stripe.Price.Recurring.Interval;
   interval_count?: number;
   trial_period_days?: number | null;
   metadata?: Stripe.Metadata;
-  products?: Product
+  products?: Product;
 }
 
 export interface Product {
@@ -49,7 +49,7 @@ export interface Product {
   active?: boolean;
   name?: string;
   description?: string;
-  image?: string;
+  image?: string | null;
   metadata: Stripe.Metadata;
 }
 
