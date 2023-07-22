@@ -80,7 +80,7 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
             )
           }
           return product.prices.map(price => (
-            <div>
+            <div key={price.id}>
               <p className="text-center">
                 Stripe Test Card: 4242 4242 4242 4242
               </p>
@@ -91,7 +91,6 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ products }) => {
                 Stripe Test CVC: 555 (any 3 digit number)
               </p>
               <Button
-                key={price.id}
                 onClick={() => handleCheckout(price)}
                 disabled={isLoading || price.id === priceIdLoading}
                 className="mb-4"
