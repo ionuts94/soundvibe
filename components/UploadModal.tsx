@@ -29,14 +29,12 @@ export const UploadModal = () => {
 
   const onChange = (open: boolean) => {
     if (!open) {
-      // TODO: Reset the form
       reset();
       uploadModal.onClose();
     }
   }
 
   const onSubmit: SubmitHandler<FieldValues> = async (values) => {
-    // TODO: Upload to supabase
     try {
       setIsLoading(true);
 

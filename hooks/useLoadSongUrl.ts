@@ -3,8 +3,6 @@ import { useSupabaseClient } from '@supabase/auth-helpers-react'
 import React from 'react'
 
 export const useLoadSongUrl = (song: Song) => {
-  console.log(song);
-
   const supabaseClient = useSupabaseClient();
 
   if (!song) {

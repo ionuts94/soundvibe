@@ -35,7 +35,7 @@ export const postData = async ({ url, data }: PostDataArgument) => {
     throw new Error(res.statusText);
   }
 
-  return res.json;
+  return res.json();
 }
 
 export const toDateTime = (seconds: number) => {
